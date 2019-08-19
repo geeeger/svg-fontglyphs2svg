@@ -161,20 +161,20 @@ class SVGFont {
         const ns = 'http://www.w3.org/2000/svg'
 
         let _svg = document.createElementNS(ns, 'svg')
-            _svg.setAttribute('data-unicode', _unicode)
-            _svg.setAttribute('data-unicode-escaped', _unicodeEscaped)
+            // _svg.setAttribute('data-unicode', _unicode)
+            // _svg.setAttribute('data-unicode-escaped', _unicodeEscaped)
             _svg.setAttribute('xmlns', ns)
             _svg.setAttribute('version', '1.1')
-            _svg.setAttribute('width', options.width)
-            _svg.setAttribute('height', options.height)
-            _svg.setAttribute('viewBox', `0 0 ${_fontface.unitsPerEm} ${_fontface.unitsPerEm}`)
+            // _svg.setAttribute('width', options.width)
+            // _svg.setAttribute('height', options.height)
+            _svg.setAttribute('viewBox', `0 0 ${glyph.getAttribute('horiz-adv-x') || _fontface.unitsPerEm} ${_fontface.unitsPerEm}`)
 
         let _path = document.createElementNS(ns, 'path')
-            _path.setAttribute('data-unicode', _unicode)
-            _path.setAttribute('data-unicode-escaped', _unicodeEscaped)
+            // _path.setAttribute('data-unicode', _unicode)
+            // _path.setAttribute('data-unicode-escaped', _unicodeEscaped)
             _path.setAttribute('transform', `scale(1, -1) translate(0, -${_fontface.ascent})`)
             _path.setAttribute('d', _d)
-            _path.setAttribute('fill', 'black')
+            // _path.setAttribute('fill', 'black')
             _path.setAttribute('stroke', 'none')
 
         _svg.appendChild(_path)

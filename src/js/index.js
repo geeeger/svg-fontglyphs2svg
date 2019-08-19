@@ -1,9 +1,7 @@
 'use strict'
 
-import SVGFont from './svgfont'
-import SVGFontTester from './svgfont.tester'
-
-require('../css/index.css')
+import SVGFont from './svgfont.js'
+import SVGFontTester from './svgfont.tester.js'
 
 // Debug Font SVG:
 // ---

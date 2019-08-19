@@ -37,7 +37,14 @@ class SVGFontTester {
                 let _icon = document.createElement('span')
                 _icon.appendChild(_svgIcon)
                 _icon.setAttribute('title', _svgIcon.innerHTML)
-
+                _icon.setAttribute('class', 'icon')
+                _icon.onclick = function () {
+                    var a = document.createElement('a');
+                    a.href = 'data:image/svg+xml;base64,' + btoa(unescape(encodeURIComponent(_icon.innerHTML)));
+                    a.download = 'x.svg';
+                    a.target = '_blank';
+                    a.click();
+                };
                 root.appendChild(_icon)
             }
         })
@@ -72,7 +79,7 @@ class SVGFontTester {
     }
 
     static renderFontIconsWhenLoaded(container, fonts, options) {
-        options = options || {width: 10, height: 10}
+        options = options || {}
 
         fonts.forEach(font => {
             font.on('load', () => SVGFontTester.renderFontIcons(container, font, options))
@@ -80,7 +87,7 @@ class SVGFontTester {
     }
 
     static renderFontIconWhenLoaded(container, font, unicode, options) {
-        options = options || {width: 30, height: 30}
+        options = options || {}
 
         font.on('load', () => SVGFontTester.renderFontIcon(container, font, unicode, options))
     }
